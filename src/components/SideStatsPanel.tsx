@@ -29,7 +29,7 @@ export const SideStatsPanel: React.FC<Props> = ({ state, options }) => {
   const displayRain = rainTotal !== null ? formatRain(rainTotal, options) : null;
 
   return (
-    <div className={panelStyle}>
+    <div data-testid="fillmeter-side-stats" className={panelStyle}>
       <div className={rowStyle}>
         <span className={labelStyle}>Level</span>
         <span className={valueStyle}>{levelPct.toFixed(0)}%</span>

@@ -1,117 +1,119 @@
-# Grafana panel plugin template
+# Fillmeter Panel
 
-This template is a starting point for building a panel plugin for Grafana.
+A Grafana panel plugin that renders an animated 3D water tank visualization. Originally ported from the [water-tank-card](https://github.com/mong00se007/water_tank) Home Assistant custom card.
 
-## What are Grafana panel plugins?
+## Overview
 
-Panel plugins allow you to add new types of visualizations to your dashboard, such as maps, clocks, pie charts, lists, and more.
+Fillmeter displays water tank fill level as an animated SVG cylinder. The water color shifts from cyan (cold) to orange (hot) based on temperature, and pipes animate when inflow or outflow is active.
 
-Use panel plugins when you want to do things like visualize data returned by data source queries, navigate between dashboards, or control external systems (such as smart home devices).
+![All three layout modes](https://raw.githubusercontent.com/briangann/briangann-fillmeter-panel/main/src/img/screenshot-dashboard.png)
 
-## Getting started
+| Adaptive (inflow + outflow active) | Side Stats (hot water warning) | Fill (low level warning) |
+|---|---|---|
+| ![Adaptive layout](https://raw.githubusercontent.com/briangann/briangann-fillmeter-panel/main/src/img/screenshot-adaptive.png) | ![Side stats layout](https://raw.githubusercontent.com/briangann/briangann-fillmeter-panel/main/src/img/screenshot-side-stats.png) | ![Low level warning](https://raw.githubusercontent.com/briangann/briangann-fillmeter-panel/main/src/img/screenshot-low-level.png) |
 
-### Frontend
+## Features
 
-1. Install dependencies
+- **3D animated SVG tank** — water fill, surface wobble, bubble rise, inflow stream, outflow drips
+- **Temperature-driven color** — cyan below 15°C, interpolates to orange at configurable threshold
+- **Warning indicators** — pulsing high-temperature triangle and low-level drop icon
+- **Three layout modes** — Adaptive, Fill, Side Stats (selectable per panel)
+- **Flexible field mapping** — auto-detects field names or accepts explicit overrides
+- **US unit support** — toggleable °F / inches display
+- **Grafana 12.3+ / React 19 compatible**
 
-   ```bash
-   pnpm install
-   ```
+## Layout Modes
 
-2. Build plugin in development mode and run in watch mode
+| Mode | Description |
+|------|-------------|
+| **Adaptive** | Tank fills panel; stats bar at bottom |
+| **Fill** | Tank maximizes space; compact stats overlay |
+| **Side Stats** | Tank on left (65%), stats panel on right |
 
-   ```bash
-   pnpm run dev
-   ```
+## Data Fields
 
-3. Build plugin in production mode
+The panel auto-detects fields by name keyword. You can override any field name in panel options.
 
-   ```bash
-   pnpm run build
-   ```
+| Field | Auto-detect keywords | Description |
+|-------|---------------------|-------------|
+| Level | `level`, `volume`, `fill`, `percent`, `tank` | Water level — % or raw volume |
+| Temperature | `temp`, `temperature` | Water temperature (°C or °F) |
+| Inflow | `inflow`, `rain_rate`, `rainrate`, `flow_in` | Inflow rate (triggers stream animation) |
+| Outflow | `outflow`, `usage`, `flow_out`, `consumption` | Outflow status — numeric > 0 or `on`/`true`/`active`/`open` |
+| Rain | `rain`, `rainfall`, `rain_total`, `precipitation` | Rain accumulation total |
 
-4. Run the tests (using Jest)
+## Panel Options
 
-   ```bash
-   # Runs the tests and watches for changes, requires git init first
-   pnpm run test
+### Layout
+- **Layout style** — Adaptive / Fill / Side Stats
 
-   # Exits after running all the tests
-   pnpm run test:ci
-   ```
+### Data Fields
+- **Level field** — field name for water level (empty = auto-detect)
+- **Temperature field** — field name for temperature (empty = auto-detect)
+- **Inflow field** — field name for inflow rate (empty = auto-detect)
+- **Outflow field** — field name for outflow status (empty = auto-detect)
+- **Rain total field** — field name for rain accumulation (empty = auto-detect)
 
-5. Spin up a Grafana instance and run the plugin inside it (using Docker)
+### Volume
+- **Max volume** — maximum volume used to compute fill % from raw value (0 = field is already a percentage)
+- **US units** — display temperature in °F and rain in inches
 
-   ```bash
-   pnpm run server
-   ```
+### Thresholds
+- **High temp warning (°C)** — temperature above which the tank turns orange and warning icon appears (default: 20)
+- **Low level alert (%)** — fill % below which the amber low-level icon appears (default: 10)
 
-6. Run the E2E tests (using Playwright)
+## Getting Started
 
-   ```bash
-   # Spins up a Grafana instance first that we tests against
-   pnpm run server
+### Development
 
-   # If you wish to start a certain Grafana version. If not specified will use latest by default
-   GRAFANA_VERSION=11.3.0 pnpm run server
+```bash
+# Install dependencies
+pnpm install
 
-   # Starts the tests
-   pnpm run e2e
-   ```
+# Build and watch
+pnpm run dev
 
-7. Run the linter
+# Production build
+pnpm run build
 
-   ```bash
-   pnpm run lint
+# Run unit tests
+pnpm run test:ci
 
-   # or
+# Start Grafana via Docker
+pnpm run server
 
-   pnpm run lint:fix
-   ```
+# Run E2E tests (requires server running)
+pnpm run e2e
+```
 
-# Distributing your plugin
+### Docker
 
-When distributing a Grafana plugin either within the community or privately the plugin must be signed so the Grafana application can verify its authenticity. This can be done with the `@grafana/sign-plugin` package.
+```bash
+# Start Grafana 12 with the plugin loaded
+docker compose up --build
+```
 
-_Note: It's not necessary to sign a plugin during development. The docker development environment that is scaffolded with `@grafana/create-plugin` caters for running the plugin without a signature._
+Grafana will be available at `http://localhost:3000`. A provisioned dashboard with example panels is included.
 
-## Initial steps
+## Distributing / Publishing
 
-Before signing a plugin please read the Grafana [plugin publishing and signing criteria](https://grafana.com/legal/plugins/#plugin-publishing-and-signing-criteria) documentation carefully.
+This plugin must be signed before publishing to the Grafana Plugins Catalog.
 
-`@grafana/create-plugin` has added the necessary commands and workflows to make signing and distributing a plugin via the grafana plugins catalog as straightforward as possible.
+1. Create a [Grafana Cloud account](https://grafana.com/signup)
+2. Ensure the plugin ID prefix matches your Grafana Cloud account slug
+3. Create a Grafana Cloud API key with the `PluginPublisher` role
+4. Add the key as `GRAFANA_API_KEY` in your GitHub repository secrets
+5. Push a version tag to trigger the release workflow:
 
-Before signing a plugin for the first time please consult the Grafana [plugin signature levels](https://grafana.com/legal/plugins/#what-are-the-different-classifications-of-plugins) documentation to understand the differences between the types of signature level.
+```bash
+pnpm version patch   # or minor / major
+git push origin main --follow-tags
+```
 
-1. Create a [Grafana Cloud account](https://grafana.com/signup).
-2. Make sure that the first part of the plugin ID matches the slug of your Grafana Cloud account.
-   - _You can find the plugin ID in the `plugin.json` file inside your plugin directory. For example, if your account slug is `acmecorp`, you need to prefix the plugin ID with `acmecorp-`._
-3. Create a Grafana Cloud API key with the `PluginPublisher` role.
-4. Keep a record of this API key as it will be required for signing a plugin
+See [How to sign a plugin](https://grafana.com/developers/plugin-tools/publish-a-plugin/sign-a-plugin) for full details.
 
-## Signing a plugin
+## References
 
-### Using Github actions release workflow
-
-If the plugin is using the github actions supplied with `@grafana/create-plugin` signing a plugin is included out of the box. The [release workflow](./.github/workflows/release.yml) can prepare everything to make submitting your plugin to Grafana as easy as possible. Before being able to sign the plugin however a secret needs adding to the Github repository.
-
-1. Please navigate to "settings > secrets > actions" within your repo to create secrets.
-2. Click "New repository secret"
-3. Name the secret "GRAFANA_API_KEY"
-4. Paste your Grafana Cloud API key in the Secret field
-5. Click "Add secret"
-
-#### Push a version tag
-
-To trigger the workflow we need to push a version tag to github. This can be achieved with the following steps:
-
-1. Run `pnpm version <major|minor|patch>`
-2. Run `git push origin main --follow-tags`
-
-## Learn more
-
-Below you can find source code for existing app plugins and other related documentation.
-
-- [Basic panel plugin example](https://github.com/grafana/grafana-plugin-examples/tree/master/examples/panel-basic#readme)
-- [`plugin.json` documentation](https://grafana.com/developers/plugin-tools/reference/plugin-json)
-- [How to sign a plugin?](https://grafana.com/developers/plugin-tools/publish-a-plugin/sign-a-plugin)
+- [Grafana plugin documentation](https://grafana.com/developers/plugin-tools/)
+- [`plugin.json` reference](https://grafana.com/developers/plugin-tools/reference/plugin-json)
+- [Original water-tank-card (Home Assistant)](https://github.com/water-tank-card)

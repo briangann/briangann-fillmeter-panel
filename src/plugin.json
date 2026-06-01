@@ -4,8 +4,8 @@
   "name": "Fillmeter",
   "id": "briangann-fillmeter-panel",
   "info": {
-    "keywords": ["panel"],
-    "description": "",
+    "keywords": ["panel", "water", "tank", "fillmeter", "level", "monitor"],
+    "description": "Animated 3D water tank panel. Visualizes fill level with temperature-driven color, inflow/outflow pipe animations, and configurable warning thresholds.",
     "author": {
       "name": "Briangann"
     },
@@ -14,7 +14,12 @@
       "large": "img/logo.svg"
     },
     "links": [],
-    "screenshots": [],
+    "screenshots": [
+      { "name": "All three layout modes", "path": "img/screenshot-dashboard.png" },
+      { "name": "Adaptive layout — 74% fill, inflow and outflow active", "path": "img/screenshot-adaptive.png" },
+      { "name": "Side Stats layout — hot water warning (22.5°C)", "path": "img/screenshot-side-stats.png" },
+      { "name": "Fill layout — low level warning (5%)", "path": "img/screenshot-low-level.png" }
+    ],
     "version": "%VERSION%",
     "updated": "%TODAY%"
   },

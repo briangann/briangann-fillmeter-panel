@@ -27,7 +27,12 @@
         "type": "grafana-testdata-datasource",
         "uid": "trlxrdZVk"
       },
-      "gridPos": { "h": 10, "w": 8, "x": 0, "y": 0 },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
       "id": 1,
       "options": {
         "layout": "adaptive",
@@ -43,7 +48,10 @@
       },
       "targets": [
         {
-          "datasource": { "type": "grafana-testdata-datasource", "uid": "trlxrdZVk" },
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
           "refId": "A",
           "scenarioId": "csv_content",
           "csvContent": "level,temperature,inflow,outflow,rain\n74,18.5,2.4,1,12.3"
@@ -57,7 +65,12 @@
         "type": "grafana-testdata-datasource",
         "uid": "trlxrdZVk"
       },
-      "gridPos": { "h": 10, "w": 8, "x": 8, "y": 0 },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 8,
+        "y": 0
+      },
       "id": 2,
       "options": {
         "layout": "side-stats",
@@ -73,7 +86,10 @@
       },
       "targets": [
         {
-          "datasource": { "type": "grafana-testdata-datasource", "uid": "trlxrdZVk" },
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
           "refId": "A",
           "scenarioId": "csv_content",
           "csvContent": "level,temperature\n25,22.5"
@@ -87,7 +103,12 @@
         "type": "grafana-testdata-datasource",
         "uid": "trlxrdZVk"
       },
-      "gridPos": { "h": 10, "w": 8, "x": 16, "y": 0 },
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 16,
+        "y": 0
+      },
       "id": 3,
       "options": {
         "layout": "fill",
@@ -103,7 +124,10 @@
       },
       "targets": [
         {
-          "datasource": { "type": "grafana-testdata-datasource", "uid": "trlxrdZVk" },
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
           "refId": "A",
           "scenarioId": "csv_content",
           "csvContent": "level\n5"
@@ -111,13 +135,60 @@
       ],
       "title": "Water Tank (Fill layout, low level warning)",
       "type": "briangann-fillmeter-panel"
+    },
+    {
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "trlxrdZVk"
+      },
+      "id": 4,
+      "title": "Water Tank (no data)",
+      "type": "briangann-fillmeter-panel",
+      "gridPos": {
+        "h": 10,
+        "w": 8,
+        "x": 0,
+        "y": 10
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "options": {
+        "layout": "adaptive",
+        "levelField": "",
+        "temperatureField": "",
+        "inflowField": "",
+        "outflowField": "",
+        "rainField": "",
+        "maxVolume": 0,
+        "warningTempThreshold": 20,
+        "lowLevelThreshold": 10,
+        "usUnits": false
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
+          "refId": "A",
+          "scenarioId": "csv_content",
+          "csvContent": "level"
+        }
+      ]
     }
   ],
   "refresh": "",
   "schemaVersion": 39,
   "tags": [],
-  "templating": { "list": [] },
-  "time": { "from": "now-6h", "to": "now" },
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
   "timepicker": {},
   "timezone": "",
   "title": "Provisioned fillmeter dashboard",

@@ -50,3 +50,5 @@ ci/
 .playwright-mcp/
 *.png
 *.jpg
+!src/img/*.png
+!src/img/*.jpg
