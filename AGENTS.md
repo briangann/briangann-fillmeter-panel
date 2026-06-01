@@ -62,3 +62,15 @@ pnpm e2e              # playwright tests (server must be running)
 **Grafana version**: `>=12.3.0` (see `plugin.json` `grafanaDependency`). Plugin ID `briangann-fillmeter-panel` — do not change.
 
 **pnpm security**: overrides for vulnerable transitive deps live in `pnpm-workspace.yaml`. `.npmrc` enforces `ignore-scripts=true`, registry lock, and `strict-ssl`. CI runs `pnpm audit --audit-level=high` after install.
+
+## Critical rules for agents
+
+**Use dedicated file tools — never shell text tools.**
+
+| Task | Use | Never use |
+|---|---|---|
+| Read a file | `Read` tool | `cat`, `head`, `tail` |
+| Edit a file | `Edit` tool | `sed`, `awk` |
+| Write a file | `Write` tool | `echo >`, `tee` |
+
+`sed` and `awk` fail on multiline patterns, special characters, and regex escaping. `Edit` does exact string replacement and is always reliable. Reserve `Bash` for shell-native operations only: `git`, `gh`, process management, env inspection.
