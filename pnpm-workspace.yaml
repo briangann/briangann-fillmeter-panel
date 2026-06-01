@@ -1,0 +1,4 @@
+overrides:
+  serialize-javascript: ">=7.0.3"
+  immutable: ">=5.1.5"
+  js-cookie: ">=3.0.7"
