@@ -2,21 +2,33 @@
 
 ## 1.0.0 (Unreleased)
 
-### Features
+### Added
 
-- 3D animated SVG water tank visualization ported from the water-tank-card Home Assistant custom card
-- Fill level display as percentage with animated water body, surface wobble, and caustic light effects
-- Temperature-driven color shift: cyan palette below 15°C, smooth RGB interpolation toward orange, full orange above configurable warning threshold
-- Inflow pipe animation: dashed stream and splash circles when inflow rate > 0
-- Outflow pipe animation: flow fill, dashed lines, and drip circles when outflow active
-- Animated bubble rise when inflow is active and tank level > 8%
-- High-temperature warning icon (pulsing red triangle) when temperature exceeds threshold
-- Low-level warning icon (pulsing blue drop with red slash) when fill level is at or below threshold
-- Three layout modes: Adaptive (tank + bottom stats bar), Fill (tank + compact overlay), Side Stats (tank left / stats panel right)
-- Auto-detection of data fields by keyword matching on field names (level, temperature, inflow, outflow, rain)
+**Visualization**
+- 3D animated SVG water tank ported from the water-tank-card Home Assistant custom card
+- Fill level display with animated water body, surface wobble, and caustic light effects
+- Temperature-driven water color: cyan below 15°C, smooth RGB interpolation to orange, full orange above warning threshold
+- Inflow pipe with animated dashed stream and splash circles when inflow rate > 0
+- Outflow pipe with animated flow fill, dashed lines, and drip circles when outflow active
+- Bubble rise animation when inflow is active and level > 8%
+
+**Warnings**
+- High-temperature warning: pulsing red triangle when temperature exceeds threshold
+- Low-level warning: pulsing blue drop with red slash when fill is at or below threshold
+
+**Layout**
+- Adaptive mode: tank fills panel with stats bar at bottom
+- Fill mode: tank maximizes space with percentage and temperature overlaid
+- Side Stats mode: tank on left (65%), stats panel on right
+
+**Data**
+- Auto-detection of level, temperature, inflow, outflow, and rain fields by keyword matching
 - Explicit field name overrides via panel options
-- Raw volume to percentage conversion using configurable max volume
-- US unit display toggle: °F and inches
-- Configurable thresholds for high-temperature warning (default 20°C) and low-level alert (default 10%)
-- Multiple panels on the same dashboard render independently with scoped SVG gradient IDs
+- Raw volume to percentage conversion via configurable max volume option
+- Outflow detection from numeric values (> 0) or strings (`on`, `true`, `active`, `open`)
+- US unit display: °F and inches toggle
+
+**Configuration**
+- High-temperature warning threshold (default: 20°C)
+- Low-level alert threshold (default: 10%)
 - React 19 compatible; requires Grafana 12.3+
