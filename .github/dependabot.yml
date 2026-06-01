@@ -42,6 +42,10 @@ updates:
         update-types:
           - 'minor'
           - 'patch'
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - 'version-update:semver-major'
 
   - package-ecosystem: 'github-actions'
     directory: '/'
@@ -50,3 +54,7 @@ updates:
     commit-message:
       prefix: 'chore(ci)'
     open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: '*'
+        update-types:
+          - 'version-update:semver-major'
