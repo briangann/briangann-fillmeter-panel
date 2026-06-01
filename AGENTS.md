@@ -71,6 +71,10 @@ pnpm e2e              # playwright tests (server must be running)
 |---|---|---|
 | Read a file | `Read` tool | `cat`, `head`, `tail` |
 | Edit a file | `Edit` tool | `sed`, `awk` |
-| Write a file | `Write` tool | `echo >`, `tee` |
+| Write a file | `Write` tool | `echo >`, `tee`, `printf` |
+| Fetch a URL | `WebFetch` tool | `curl`, `wget` |
+| Find files by pattern | `Glob` tool | `find` + `-exec` chains |
+| Search code | `Grep` tool | `grep -P` (PCRE unavailable on macOS) |
+| Parse JSON from API | `gh --jq` flag or `Read` + reason | `jq` in bash pipelines |
 
-`sed` and `awk` fail on multiline patterns, special characters, and regex escaping. `Edit` does exact string replacement and is always reliable. Reserve `Bash` for shell-native operations only: `git`, `gh`, process management, env inspection.
+`sed`/`awk` fail on multiline patterns, special characters, and regex escaping. `Edit` does exact string replacement and is always reliable. `grep -P` silently produces wrong results on macOS. `curl` and `jq` in pipelines break on shell variable interpolation and escaping edge cases. Reserve `Bash` for shell-native operations only: `git`, `gh`, process management, env inspection.
