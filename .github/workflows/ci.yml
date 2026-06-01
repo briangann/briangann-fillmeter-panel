@@ -5,18 +5,29 @@ on:
     branches:
       - master
       - main
+    paths-ignore:
+      - '**/*.md'
+      - 'src/img/**'
   pull_request:
     branches:
       - master
       - main
+    paths-ignore:
+      - '**/*.md'
+      - 'src/img/**'
 
 permissions:
   contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   build:
     name: Build, lint and unit tests
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     outputs:
       plugin-id: ${{ steps.metadata.outputs.plugin-id }}
       plugin-version: ${{ steps.metadata.outputs.plugin-version }}
@@ -100,8 +111,6 @@ jobs:
       - name: Get plugin metadata
         id: metadata
         run: |
-          sudo apt-get install jq
-
           export GRAFANA_PLUGIN_ID=$(cat dist/plugin.json | jq -r .id)
           export GRAFANA_PLUGIN_VERSION=$(cat dist/plugin.json | jq -r .info.version)
           export GRAFANA_PLUGIN_ARTIFACT=${GRAFANA_PLUGIN_ID}-${GRAFANA_PLUGIN_VERSION}.zip
@@ -200,6 +209,14 @@ jobs:
         uses: grafana/plugin-actions/wait-for-grafana@wait-for-grafana/v1.0.4
         with:
           url: http://localhost:3000/login
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            playwright-chromium-${{ runner.os }}-
 
       - name: Install Playwright Browsers
         run: pnpm exec playwright install chromium --with-deps
