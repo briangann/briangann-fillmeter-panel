@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@emotion/css':
-        specifier: 11.10.6
-        version: 11.10.6
+        specifier: 11.13.5
+        version: 11.13.5
       '@grafana/data':
         specifier: 12.4.2
         version: 12.4.2(eslint@9.39.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
@@ -27,149 +27,149 @@ importers:
         specifier: 12.4.2
         version: 12.4.2(@react-spectrum/provider@3.11.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@types/react@18.3.29)(eslint@9.39.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.2)
       react:
-        specifier: ^18.3.0
+        specifier: 18.3.1
         version: 18.3.1
       react-dom:
-        specifier: ^18.3.0
+        specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@grafana/eslint-config':
-        specifier: ^9.0.0
+        specifier: 9.0.0
         version: 9.0.0(@stylistic/eslint-plugin-ts@4.4.1(eslint@9.39.4)(typescript@5.9.2))(@typescript-eslint/eslint-plugin@8.60.0(@typescript-eslint/parser@8.60.0(eslint@9.39.4)(typescript@5.9.2))(eslint@9.39.4)(typescript@5.9.2))(@typescript-eslint/parser@8.60.0(eslint@9.39.4)(typescript@5.9.2))(eslint-config-prettier@10.1.8(eslint@9.39.4))(eslint-plugin-jsdoc@52.0.4(eslint@9.39.4))(eslint-plugin-react-hooks@7.1.1(eslint@9.39.4))(eslint-plugin-react@7.37.5(eslint@9.39.4))(eslint@9.39.4)(typescript@5.9.2)
       '@grafana/plugin-e2e':
-        specifier: ^3.6.1
+        specifier: 3.9.0
         version: 3.9.0(@playwright/test@1.60.0)
       '@grafana/sign-plugin':
-        specifier: ^3.2.2
+        specifier: 3.3.0
         version: 3.3.0
       '@grafana/tsconfig':
-        specifier: ^2.0.1
+        specifier: 2.2.0
         version: 2.2.0
       '@playwright/test':
-        specifier: ^1.57.0
+        specifier: 1.60.0
         version: 1.60.0
       '@stylistic/eslint-plugin-ts':
-        specifier: ^4.4.0
+        specifier: 4.4.1
         version: 4.4.1(eslint@9.39.4)(typescript@5.9.2)
       '@swc/core':
-        specifier: ^1.15.0
+        specifier: 1.15.40
         version: 1.15.40(@swc/helpers@0.5.23)
       '@swc/helpers':
-        specifier: ^0.5.0
+        specifier: 0.5.23
         version: 0.5.23
       '@swc/jest':
-        specifier: ^0.2.0
+        specifier: 0.2.39
         version: 0.2.39(@swc/core@1.15.40(@swc/helpers@0.5.23))
       '@testing-library/jest-dom':
-        specifier: ^6.6.0
+        specifier: 6.9.1
         version: 6.9.1
       '@testing-library/react':
-        specifier: ^16.3.0
+        specifier: 16.3.2
         version: 16.3.2(@testing-library/dom@10.4.1)(@types/react-dom@18.3.7(@types/react@18.3.29))(@types/react@18.3.29)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@types/jest':
-        specifier: ^29.5.0
+        specifier: 29.5.14
         version: 29.5.14
       '@types/node':
-        specifier: ^24.0.0
+        specifier: 24.12.4
         version: 24.12.4
       '@types/react':
-        specifier: ^18.3.0
+        specifier: 18.3.29
         version: 18.3.29
       '@types/react-dom':
-        specifier: ^18.3.0
+        specifier: 18.3.7
         version: 18.3.7(@types/react@18.3.29)
       '@typescript-eslint/eslint-plugin':
-        specifier: ^8.38.0
+        specifier: 8.60.0
         version: 8.60.0(@typescript-eslint/parser@8.60.0(eslint@9.39.4)(typescript@5.9.2))(eslint@9.39.4)(typescript@5.9.2)
       '@typescript-eslint/parser':
-        specifier: ^8.38.0
+        specifier: 8.60.0
         version: 8.60.0(eslint@9.39.4)(typescript@5.9.2)
       copy-webpack-plugin:
-        specifier: ^13.0.0
+        specifier: 13.0.1
         version: 13.0.1(webpack@5.107.2)
       css-loader:
-        specifier: ^7.1.0
+        specifier: 7.1.4
         version: 7.1.4(webpack@5.107.2)
       eslint:
-        specifier: ^9.32.0
+        specifier: 9.39.4
         version: 9.39.4
       eslint-config-prettier:
-        specifier: ^10.1.0
+        specifier: 10.1.8
         version: 10.1.8(eslint@9.39.4)
       eslint-plugin-jsdoc:
-        specifier: ^52.0.0
+        specifier: 52.0.4
         version: 52.0.4(eslint@9.39.4)
       eslint-plugin-react:
-        specifier: ^7.37.0
+        specifier: 7.37.5
         version: 7.37.5(eslint@9.39.4)
       eslint-plugin-react-hooks:
-        specifier: ^7.0.0
+        specifier: 7.1.1
         version: 7.1.1(eslint@9.39.4)
       eslint-webpack-plugin:
-        specifier: ^5.0.0
+        specifier: 5.0.3
         version: 5.0.3(eslint@9.39.4)(webpack@5.107.2)
       fork-ts-checker-webpack-plugin:
-        specifier: ^9.1.0
+        specifier: 9.1.0
         version: 9.1.0(typescript@5.9.2)(webpack@5.107.2)
       glob:
-        specifier: ^11.1.0
+        specifier: 11.1.0
         version: 11.1.0
       identity-obj-proxy:
-        specifier: ^3.0.0
+        specifier: 3.0.0
         version: 3.0.0
       imports-loader:
-        specifier: ^5.0.0
+        specifier: 5.0.0
         version: 5.0.0(webpack@5.107.2)
       jest:
-        specifier: ^29.7.0
+        specifier: 29.7.0
         version: 29.7.0(@types/node@24.12.4)(babel-plugin-macros@3.1.0)(ts-node@10.9.2(@swc/core@1.15.40(@swc/helpers@0.5.23))(@types/node@24.12.4)(typescript@5.9.2))
       jest-environment-jsdom:
-        specifier: ^29.7.0
+        specifier: 29.7.0
         version: 29.7.0
       prettier:
-        specifier: ^3.6.0
+        specifier: 3.8.3
         version: 3.8.3
       replace-in-file-webpack-plugin:
-        specifier: ^1.0.0
+        specifier: 1.0.6
         version: 1.0.6
       sass:
-        specifier: ^1.89.0
+        specifier: 1.100.0
         version: 1.100.0
       sass-loader:
-        specifier: ^16.0.0
+        specifier: 16.0.8
         version: 16.0.8(sass@1.100.0)(webpack@5.107.2)
       semver:
-        specifier: ^7.7.0
+        specifier: 7.8.1
         version: 7.8.1
       style-loader:
-        specifier: ^4.0.0
+        specifier: 4.0.0
         version: 4.0.0(webpack@5.107.2)
       swc-loader:
-        specifier: ^0.2.0
+        specifier: 0.2.7
         version: 0.2.7(@swc/core@1.15.40(@swc/helpers@0.5.23))(webpack@5.107.2)
       terser-webpack-plugin:
-        specifier: ^5.3.0
+        specifier: 5.6.1
         version: 5.6.1(@swc/core@1.15.40(@swc/helpers@0.5.23))(postcss@8.5.15)(webpack@5.107.2)
       ts-node:
-        specifier: ^10.9.0
+        specifier: 10.9.2
         version: 10.9.2(@swc/core@1.15.40(@swc/helpers@0.5.23))(@types/node@24.12.4)(typescript@5.9.2)
       typescript:
         specifier: 5.9.2
         version: 5.9.2
       webpack:
-        specifier: ^5.101.0
+        specifier: 5.107.2
         version: 5.107.2(@swc/core@1.15.40(@swc/helpers@0.5.23))(postcss@8.5.15)(webpack-cli@6.0.1)
       webpack-cli:
-        specifier: ^6.0.0
+        specifier: 6.0.1
         version: 6.0.1(webpack@5.107.2)
       webpack-livereload-plugin:
-        specifier: ^3.0.2
+        specifier: 3.0.2
         version: 3.0.2(webpack@5.107.2)
       webpack-subresource-integrity:
-        specifier: ^5.1.0
+        specifier: 5.1.0
         version: 5.1.0(webpack@5.107.2)
       webpack-virtual-modules:
-        specifier: ^0.6.2
+        specifier: 0.6.2
         version: 0.6.2
 
 packages:
@@ -380,9 +380,6 @@ packages:
 
   '@emotion/cache@11.14.0':
     resolution: {integrity: sha512-L/B1lc/TViYk4DcpGxtAVbx0ZyiKM5ktoIyafGkH6zg/tj+mA+NE//aPYKG0k8kCHSHVJrpLpcAlOBEXQ3SavA==}
-
-  '@emotion/css@11.10.6':
-    resolution: {integrity: sha512-88Sr+3heKAKpj9PCqq5A1hAmAkoSIvwEq1O2TwDij7fUtsJpdkV4jMTISSTouFeRvsGvXIpuSuDQ4C1YdfNGXw==}
 
   '@emotion/css@11.13.5':
     resolution: {integrity: sha512-wQdD0Xhkn3Qy2VNcIzbLP9MR8TafI0MJb7BEAXKp+w4+XqErksWR4OXomuDzPsN4InLdGhVe6EYcn2ZIUCpB8w==}
@@ -5199,16 +5196,6 @@ snapshots:
       '@emotion/utils': 1.4.2
       '@emotion/weak-memoize': 0.4.0
       stylis: 4.2.0
-
-  '@emotion/css@11.10.6':
-    dependencies:
-      '@emotion/babel-plugin': 11.13.5
-      '@emotion/cache': 11.14.0
-      '@emotion/serialize': 1.3.3
-      '@emotion/sheet': 1.4.0
-      '@emotion/utils': 1.4.2
-    transitivePeerDependencies:
-      - supports-color
 
   '@emotion/css@11.13.5':
     dependencies:
