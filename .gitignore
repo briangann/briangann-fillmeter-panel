@@ -45,6 +45,7 @@ ci/
 # Editor
 .idea
 
+.worktrees/
 .eslintcache
 .superpowers/
 .playwright-mcp/
