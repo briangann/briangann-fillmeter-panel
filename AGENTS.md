@@ -67,14 +67,47 @@ pnpm e2e              # playwright tests (server must be running)
 
 **Use dedicated file tools — never shell text tools.**
 
+**File operations**
+
 | Task | Use | Never use |
 |---|---|---|
 | Read a file | `Read` tool | `cat`, `head`, `tail` |
 | Edit a file | `Edit` tool | `sed`, `awk` |
 | Write a file | `Write` tool | `echo >`, `tee`, `printf` |
-| Fetch a URL | `WebFetch` tool | `curl`, `wget` |
 | Find files by pattern | `Glob` tool | `find` + `-exec` chains |
 | Search code | `Grep` tool | `grep -P` (PCRE unavailable on macOS) |
+
+**Web / network**
+
+| Task | Use | Never use |
+|---|---|---|
+| Fetch a URL | `WebFetch` tool | `curl`, `wget` |
+| Search the web | `WebSearch` tool | `curl` + search API calls |
 | Parse JSON from API | `gh --jq` flag or `Read` + reason | `jq` in bash pipelines |
 
-`sed`/`awk` fail on multiline patterns, special characters, and regex escaping. `Edit` does exact string replacement and is always reliable. `grep -P` silently produces wrong results on macOS. `curl` and `jq` in pipelines break on shell variable interpolation and escaping edge cases. Reserve `Bash` for shell-native operations only: `git`, `gh`, process management, env inspection.
+**GitHub**
+
+| Task | Use | Never use |
+|---|---|---|
+| PRs, issues, branches, reviews, file contents | `mcp__plugin_github_github__*` tools | `gh` CLI (prefer MCP for structured output) |
+
+**Browser / E2E**
+
+| Task | Use | Never use |
+|---|---|---|
+| Navigate, click, fill, screenshot | `mcp__plugin_playwright_playwright__*` tools | shell scripts driving browsers |
+
+**Code intelligence**
+
+| Task | Use |
+|---|---|
+| Go-to-definition, find references, hover | `LSP` tool |
+
+**Process / async**
+
+| Task | Use | Never use |
+|---|---|---|
+| Watch a background process | `Monitor` tool | `while` polling loops |
+| Track multi-step work | `TaskCreate` / `TaskUpdate` / `TaskGet` | temp files or env vars |
+
+`sed`/`awk` fail on multiline patterns, special characters, and regex escaping. `Edit` does exact string replacement and is always reliable. `grep -P` silently produces wrong results on macOS. `curl` and `jq` in pipelines break on shell variable interpolation and escaping edge cases. Reserve `Bash` for shell-native operations only: `git`, `gh` (when MCP is unavailable), process management, env inspection.
