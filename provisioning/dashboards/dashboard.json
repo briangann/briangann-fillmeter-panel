@@ -137,7 +137,10 @@
       "type": "briangann-fillmeter-panel"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "grafana-testdata-datasource",
+        "uid": "trlxrdZVk"
+      },
       "id": 4,
       "title": "Water Tank (no data)",
       "type": "briangann-fillmeter-panel",
@@ -163,7 +166,17 @@
         "lowLevelThreshold": 10,
         "usUnits": false
       },
-      "targets": []
+      "targets": [
+        {
+          "datasource": {
+            "type": "grafana-testdata-datasource",
+            "uid": "trlxrdZVk"
+          },
+          "refId": "A",
+          "scenarioId": "csv_content",
+          "csvContent": "level"
+        }
+      ]
     }
   ],
   "refresh": "",

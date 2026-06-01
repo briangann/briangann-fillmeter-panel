@@ -37,6 +37,15 @@ describe('extractTankState', () => {
     expect(state.hasData).toBe(false);
   });
 
+  it('returns hasData=false when all series have 0 rows', () => {
+    const emptyFrame = toDataFrame({ fields: [] });
+    const state = extractTankState(
+      { series: [emptyFrame], state: LoadingState.Done, timeRange: {} as any },
+      defaultOptions
+    );
+    expect(state.hasData).toBe(false);
+  });
+
   it('auto-detects level field by name "level"', () => {
     const data = makeData([{ name: 'level', values: [75] }]);
     const state = extractTankState(data, defaultOptions);

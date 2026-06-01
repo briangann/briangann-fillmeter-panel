@@ -39,7 +39,7 @@ function numericValue(field: Field | null): number | null {
 }
 
 export function extractTankState(data: PanelData, options: TankOptions): TankState {
-  if (!data.series.length) {
+  if (!data.series.length || data.series.every((s) => s.length === 0)) {
     return {
       levelPct: 0,
       rawVolume: null,
@@ -100,6 +100,6 @@ export function extractTankState(data: PanelData, options: TankOptions): TankSta
     inflowActive,
     outflowActive,
     rainTotal,
-    hasData: true,
+    hasData: levelField !== null,
   };
 }
