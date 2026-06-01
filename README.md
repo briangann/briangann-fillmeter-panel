@@ -6,6 +6,12 @@ A Grafana panel plugin that renders an animated 3D water tank visualization. Ori
 
 Fillmeter displays water tank fill level as an animated SVG cylinder. The water color shifts from cyan (cold) to orange (hot) based on temperature, and pipes animate when inflow or outflow is active.
 
+![All three layout modes](img/screenshot-dashboard.png)
+
+| Adaptive (inflow + outflow active) | Side Stats (hot water warning) | Fill (low level warning) |
+|---|---|---|
+| ![Adaptive layout](img/screenshot-adaptive.png) | ![Side stats layout](img/screenshot-side-stats.png) | ![Low level warning](img/screenshot-low-level.png) |
+
 ## Features
 
 - **3D animated SVG tank** — water fill, surface wobble, bubble rise, inflow stream, outflow drips
