@@ -1,12 +1,10 @@
 # Fillmeter Panel
 
-A Grafana panel plugin that renders an animated 3D water tank visualization. Originally ported from the [water-tank-card](https://github.com/water-tank-card) Home Assistant custom card.
+A Grafana panel plugin that renders an animated 3D water tank visualization. Originally ported from the [water-tank-card](https://github.com/mong00se007/water_tank) Home Assistant custom card.
 
 ## Overview
 
 Fillmeter displays water tank fill level as an animated SVG cylinder. The water color shifts from cyan (cold) to orange (hot) based on temperature, and pipes animate when inflow or outflow is active.
-
-![Fillmeter Panel](src/img/logo.svg)
 
 ## Features
 
