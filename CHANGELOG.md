@@ -32,3 +32,7 @@
 - High-temperature warning threshold (default: 20°C)
 - Low-level alert threshold (default: 10%)
 - React 19 compatible; requires Grafana 12.3+
+
+### Documentation
+- README with feature overview, configuration reference, and screenshots
+- Panel screenshots: adaptive mode and side-stats mode
