@@ -46,3 +46,7 @@ ci/
 .idea
 
 .eslintcache
+.superpowers/
+.playwright-mcp/
+*.png
+*.jpg
