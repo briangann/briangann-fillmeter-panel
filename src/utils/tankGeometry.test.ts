@@ -1,4 +1,4 @@
-import { TANK, waterSurfaceY, waterBodyPath, waterBotArcPath, pipeGeometry } from './tankGeometry';
+import { TANK, WATER_EDGE_INSET, WATER_SURFACE_RY_INSET, waterSurfaceY, waterBodyPath, waterBotArcPath, pipeGeometry } from './tankGeometry';
 
 describe('TANK constants', () => {
   it('has correct values', () => {
@@ -8,6 +8,15 @@ describe('TANK constants', () => {
     expect(TANK.topY).toBe(38);
     expect(TANK.botY).toBe(155);
     expect(TANK.bodyH).toBe(117);
+  });
+});
+
+describe('geometry inset constants', () => {
+  it('WATER_EDGE_INSET is 3', () => {
+    expect(WATER_EDGE_INSET).toBe(3);
+  });
+  it('WATER_SURFACE_RY_INSET is 1', () => {
+    expect(WATER_SURFACE_RY_INSET).toBe(1);
   });
 });
 

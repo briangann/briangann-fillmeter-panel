@@ -87,4 +87,32 @@ describe('extractTankState', () => {
     expect(state.inflowActive).toBe(true);
     expect(state.inflowRate).toBe(2.4);
   });
+
+  it('returns null for explicit field name that does not match any field', () => {
+    const data = makeData([{ name: 'level', values: [50] }]);
+    const state = extractTankState(data, { ...defaultOptions, temperatureField: 'nonexistent' });
+    expect(state.temperature).toBeNull();
+  });
+
+  it('returns null temperature when field has no value', () => {
+    const data = makeData([{ name: 'level', values: [50] }, { name: 'temperature', values: [] }]);
+    const state = extractTankState(data, defaultOptions);
+    expect(state.temperature).toBeNull();
+  });
+
+  it('returns null for non-numeric field value', () => {
+    const data = makeData([{ name: 'level', values: ['not-a-number'] }]);
+    const state = extractTankState(data, defaultOptions);
+    expect(state.levelPct).toBe(0);
+  });
+
+  it('converts Fahrenheit temperature to Celsius', () => {
+    const data = makeData([{ name: 'level', values: [50] }, { name: 'temperature', values: [32] }]);
+    // Patch field config unit to °F
+    const frame = data.series[0];
+    const tempField = frame.fields.find((f) => f.name === 'temperature')!;
+    tempField.config = { unit: '°F' };
+    const state = extractTankState(data, defaultOptions);
+    expect(state.temperature).toBeCloseTo(0); // 32°F = 0°C
+  });
 });
