@@ -52,7 +52,7 @@ export const StatsBar: React.FC<Props> = ({ state, options }) => {
   const displayRain = rainTotal !== null ? formatRain(rainTotal, options) : null;
 
   return (
-    <div className={barStyle}>
+    <div data-testid="fillmeter-stats-bar" className={barStyle}>
       {displayTemp && <Stat label="Temp" value={displayTemp} />}
       {displayRain && <Stat label="Rain" value={displayRain} />}
       {displayInflow && <Stat label="Rate" value={displayInflow} active={inflowActive} />}
